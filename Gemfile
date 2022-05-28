@@ -58,3 +58,4 @@ gem 'devise'
 gem 'enum_help'
 gem 'kaminari','~> 1.2.1'
 gem 'pry-byebug', group: :development
+gem 'jquery-rails'
