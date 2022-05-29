@@ -1,19 +1,60 @@
 <div class='container mx-auto'>
   <div class='row'>
-<h4>Top画面</h4>
+    <div class="col-lg-3 mt-5"></div>
 
-
-    <div class='col-10'>
-      <div class="box">
-       <div class="images">
-        <div class='image1'></div>
-        <div class='image2'></div>
-        <div class='image3'></div>
-        <div class='image4'></div>
-        <div class='image5'></div>
+    <div class="col-lg-9 mt-5">
+      <div class="row">
+        <div id="carouselExampleControls", class="carousel slide", data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <%= image_tag "image1.jpg", style: "background-size: cover;", size: "850x280", class: "carousel_image" %>
+              <div class="carousel-caption d-md-block mb-5">
+                <h5 class="card-text text-black-50 mb-5">
+                  ようこそ！あなたの欲しい"今"が見つかる
+                </h5>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <%= image_tag "image2.jpg", style: "background-size: cover;", size: "850x280", class: "carousel_image" %>
+              <div class="carousel-caption d-md-block mb-5">
+                <h5 class="card-text text-body mb-5">
+                  業界最大級の品揃えを目指してます！
+                </h5>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <%= image_tag "image3.jpg", style: "background-size: cover;", size: "850x280", class: "carousel_image" %>
+              <div class="carousel-caption d-md block mb-5">
+                <h5 class="card-text text-black-50 mb-5">
+                  Have a nice day!
+                </h5>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <%= image_tag "image4.jpg", style: "background-size: cover;", size: "850x280", class: "carousel_image" %>
+              <div class="carousel-caption d-md block mb-5">
+                <h5 class="card-text text-success mb-5">
+                  Let's go wherever you want to go.
+                </h5>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <%= image_tag "image5.jpg", style: "background-size: cover;", size: "850x280", class: "carousel_image" %>
+              <div class="carousel-caption d-md block mb-5">
+                <h5 class="card-text text-black-50 mb-5">
+                  Everyday is new day!
+                </h5>
+              </div>
+            </div>
+            <a class="carousel-control-prev", href="#carouselExampleControls", role="button", data-slide="prev">
+              <span class="carousel-control-prev-icon", aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
       </div>
-     </div>
     </div>
+
 
   </div>
 </div>

@@ -13,28 +13,5 @@
  *= require_tree .
  *= require_self
  */
-
-/*高さを指定することにより画像が表示される*/
-#box {
-  height: 600px;
-}
-
-.image1 {
-  background-image: url(image1.jpg);
-}
-
-.image2 {
-  background-image: url(image2.jpg);
-}
-
-.image3 {
-  background-image: url(image3.jpg);
-}
-
-.image4 {
-  background-image: url(image4.jpg);
-}
-
-.image5 {
-  background-image: url(image5.jpg);
-}
+ @import "slick-theme";
+ @import "slick";
