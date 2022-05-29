@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ECサイト</title>
+    <title>Destino</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
   </head>
 
   <body>
+    <header style="background-color: #007fff">
+      <%= render "layouts/header", customer: current_customer %>
+    </header>
+    <main class="pb-5">
+      <div class="text-center", style="height: 30px;">
+        <div id="flash-message" style="display: none;">
+          <%= render "layouts/flash_message" %>
+        </div>
+      </div>
     <%= yield %>
+    </main>
+    <footer class="text-center fixed-bottom brown mt-3 pt-1", style="background-color: #007fff">
+      <small>©Destino︎.inc</small>
+    </footer>
   </body>
 </html>
