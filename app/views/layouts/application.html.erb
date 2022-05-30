@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Destino</title>
+    <%= favicon_link_tag('logo.png') %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -21,8 +22,18 @@
       </div>
     <%= yield %>
     </main>
-    <footer class="text-center fixed-bottom brown mt-3 pt-1", style="background-color: #007fff">
-      <small>©Destino︎.inc</small>
+    <div style="height: 100px;"></div>
+    <footer class="text-center fixed-bottom", style="background-color: #007fff">
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto mt-3">
+           <p>©Destino︎.inc</p>
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-twitter-square"></i>
+            <i class="fab fa-instagram"></i>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
