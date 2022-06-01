@@ -1,0 +1,14 @@
+<div class="container">
+  <%= render "layouts/error_messages", model: @genre%>
+  <div class="row">
+    <h3 class="bg-light orange d-inline-block px-4 mx-5 mb-3"><i class="fas fa-circle-check"></i>ジャンル編集</h3>
+  </div>
+
+  <div class="col-lg-8">
+    <%= form_with model: @genre,url: admin_genre_path do |f| %>
+    <strong><%= f.label: "ジャンル名", class: "col-sm-3 control-label" %></strong>
+    <span class="mr-5"><%= f.text_field :name %></span>
+    <%= f.submit "ジャンル名変更", class: "btn btn-success btn-sm" %>
+    <% end %>
+  </div>
+</div>
