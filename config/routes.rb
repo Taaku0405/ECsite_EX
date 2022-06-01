@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
     resources :genres, only: [:index, :create, :edit, :update]
 
+    resources :homes, only: [:top]
+
     resources :items, except: [:destroy]
 
     resources :orders, only: [:index, :show, :update]
@@ -23,7 +25,7 @@ Rails.application.routes.draw do
 
     get "search" => "searches#search"
   end
-  
+
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
