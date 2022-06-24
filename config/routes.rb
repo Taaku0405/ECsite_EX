@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :items, only: [:index, :show] do
-      get :search, on: :collection
+     get :search, on: :collection
     end
 
     resource :customer, only: [:show, :edit, :update]
