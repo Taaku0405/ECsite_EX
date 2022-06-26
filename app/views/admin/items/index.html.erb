@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <h3 class="d-inline-block px-4 mx-5 mb-3"><i class="fab fa-shopify"></i>商品一覧</h3>
+    <div>
+      <%= link_to new_admin_item_path do %>
+      <i class="fas fa-plus-circle"></i>
+      <i class="text-success">商品を新しく追加する</i>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <%= render "item_list", items: @items %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>

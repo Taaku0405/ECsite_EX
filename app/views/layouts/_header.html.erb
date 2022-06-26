@@ -25,7 +25,7 @@
 
         <li class="nav-link">
           <%= link_to items_path, class: "btn" do %>
-          <i class="fas fa-gift"></i>商品一覧
+          <i class="fab fa-shopify"></i>商品一覧
           <% end %>
         </li>
 
@@ -44,7 +44,7 @@
         <% elsif admin_signed_in? %>
         <li class="nav-link">
           <%= link_to admin_items_path,  class: "btn" do %>
-          <i class="fas fa-gift"></i>商品一覧
+          <i class="fab fa-shopify"></i>商品一覧
           <% end %>
         </li>
 
@@ -56,19 +56,19 @@
 
         <li class="nav-link">
           <%= link_to admin_orders_path, class: "btn" do %>
-          <i class="fas fa-bag-shopping"></i>注文履歴一覧
+          <i class="fas fa-shopping-bag"></i>注文履歴一覧
           <% end %>
         </li>
 
         <li class="nav-link">
           <%= link_to admin_genres_path, class: "btn" do %>
-          <i class="fas fa-circle-check"></i>ジャンル一覧
+          <i class="fas fa-object-group"></i>ジャンル一覧
           <% end %>
         </li>
 
         <li class="nav-link">
           <%= link_to destroy_admin_session_path,  class: "btn" do %>
-          <i class="fas fa-right-from-bracket"></i>ログアウト
+          <i class="fas fa-sign-out-alt"></i>ログアウト
           <% end %>
         </li>
 
