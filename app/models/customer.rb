@@ -16,6 +16,7 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true, length: {maximum: 11}
   
+    #検索機能の
   def self.looks(search, word)
     if search == "完全一致"
       @customer = Customer.where("last_name_kana LIKE?", "#{word}")

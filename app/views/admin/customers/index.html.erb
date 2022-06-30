@@ -1,0 +1,34 @@
+<div class="container">
+  <h3 class="d-inline-block px-4 mx-5 mb-3"><i class="fas fa-users"></i>会員一覧画面</h3>
+  <table class="table table-borderless table-hover">
+    <thead class="bg-light">
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.id %></td>
+        <td>
+          <%= link_to admin_customer_path(customer.id) do %>
+          <%= customer.family_name %><%= customer.first_name %>
+          <% end %>
+        </td>
+        <td><%= customer.email %></td>
+        <% if customer.is_deleted == false %>
+        <td class="text-success"><strong>有効</strong></td>
+        <% else %>
+        <td class="text-black-50"><strong>退会</strong></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="paginate d-flex justify-content-center">
+    <%= paginate @customers %>
+  </div>
+</div>

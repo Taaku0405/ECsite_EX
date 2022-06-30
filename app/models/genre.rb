@@ -4,6 +4,7 @@ class Genre < ApplicationRecord
 
   validates :name, presence: true
   
+    #検索機能の定義
   def self.looks(search, word)
     if search == "完全一致"
       @genre = Genre.where("name LIKE?", "#{word}")
