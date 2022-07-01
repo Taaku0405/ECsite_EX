@@ -1,0 +1,17 @@
+<div class="container">
+  <h3 class="d-inline-block px-4 mx-5 mb-3"><i class="fas fa-users"></i> <%= @customer_name %>さんの会員情報編集</h3>
+  <div id="error">
+    <%= render 'layouts/error_messages', model: @customer %>
+  </div>
+  <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
+  <div class="form-group">
+    <div class="col-2">会員ID</div>
+    <%= @customer.id %>
+  </div>
+  <%= render "customer_edit", f: f %>
+  <div class="form-group">
+    <div class="col-2"></div>
+    <%= f.submit "変更を保存する", class: "btn btn-info px-5" %>
+  </div>
+  <% end %>
+</div>
