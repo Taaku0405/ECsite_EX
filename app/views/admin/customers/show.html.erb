@@ -1,0 +1,48 @@
+<div class="container">
+  <h3 class="d-inline-block px-4 mx-5 mb-3"><i class="fas fa-users"></i><%= @customer.family_name %><%= @customer.first_name %>さんの会員詳細</h3>
+  <table class="my-3">
+    <tr>
+      <th style="height: 50px; width: 200px;">会員ID</th>
+      <th><%= @customer.id %></th>
+    </tr>
+    <tr>
+      <th style="height: 50px; width: 200px;">氏名</th>
+      <th><%= @customer.family_name %>　<%= @customer.first_name %></th>
+    </tr>
+    <tr>
+      <th style="height: 50px; width: 200px;">フリガナ</th>
+      <th><%= @customer.family_name_kana %>　<%= @customer.first_name_kana %></th>
+    </tr>
+    <tr>
+      <th style="height: 50px; width: 200px;">郵便番号</th>
+      <th><%= @customer.postal_code %></th>
+    </tr>
+    <tr>
+      <th style="height: 50px; width: 200px;">住所</th>
+      <th><%= @customer.address %></th>
+    </tr>
+    <tr>
+      <th style="height: 50px; width: 200px;">電話番号</th>
+      <th><%= @customer.telephone_number %></th>
+    </tr>
+    <tr>
+      <th style="height: 50px; width: 200px;">メールアドレス</th>
+      <th><%= @customer.email %></th>
+    </tr>
+    <tr>
+      <th style="height: 50px; width: 200px;">会員ステータス</th>
+      <% if @customer.is_deleted == false %>
+      <th class="text-success"><strong>有効</strong></th>
+      <% else %>
+      <th class="text-danger"><strong>退会</strong></th>
+      <% end %>
+    </tr>
+    <tr>
+      <th style="height: 50px; width: 200px;"></th>
+      <th>
+        <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success px-5" %>
+        <%= link_to "注文履歴一覧を見る", admin_customer_orders_path(@customer), class: "btn btn-primary" %>
+      </th>
+    </tr>
+  </table>
+</div>
