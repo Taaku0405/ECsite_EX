@@ -1,0 +1,26 @@
+<div class="container">
+  <h3 class="d-inline-block px-4 mx-5 mb-3"><i class="fas fa-shopping-bag"></i>注文履歴一覧</h3>
+  <div class="container row justify-content-center">
+    <table class="table table-borderless table-hover">
+      <thead class="bg-light">
+        <tr>
+          <th>購入日時</th>
+          <th>購入者</th>
+          <th>注文個数</th>
+          <th>注文ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr>
+          <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
+          <td><%= order.customer.family_name + order.customer.first_name %></td>
+          <td><%= order.total %></td>
+          <td><%= order.order_status_i18n %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @orders %>
+  </div>
+</div>
