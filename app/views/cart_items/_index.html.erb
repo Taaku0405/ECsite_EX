@@ -1,0 +1,40 @@
+<h3 class="inline-block px-4"><i class="fas fa-cart-shopping"></i>ショッピングカート</h3>
+<% if @cart_items.present? %>
+<div class="ml-auto">
+  <%= link_to "カートを空にする", empty_path, method: :delete, class: "btn btn-sm btn-danger px-3", remote: true %>
+</div>
+<table class="table table-bordered my-4">
+  <thead>
+    <tr class="bg-light">
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--合計金額初期値0-->
+    <% total_price = 0 %>
+    <% cart_items.each do |cart_item| %>
+    <tr>
+      <td class="align-middle">
+        <%= image_tag cart_item.item.item_image.variant(resize_to_fill: [100, 70]), class:"mr-3" %>
+        <%= cart_item.item.name %>
+      </td>
+      <td class="align-middle">¥<%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+      <td class="align-middle">
+        <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local: false do |f| %>
+        <%= f.select :quantity, *[1..10], class: "form-control" %>
+        <%= f.submit "変更", class: "btn btn-sm bg-dark-brown" %>
+        <% end %>
+      </td>
+      <td class="align-middle">¥<%= cart_item.subtotal.to_s(:delimited) %></td>
+       <!-- eachで取り出された商品の小計(cart_item.subtotal)を一つずつ足してtatal_priceに格納-->
+       <% total_price +=  cart_item.subtotal %>
+       <td class="align-middle text-center"><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger", remote: true %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
