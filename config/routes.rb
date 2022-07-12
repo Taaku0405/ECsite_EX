@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     get 'customers/quit', as: 'quit'
     patch 'customers/withdraw', as: 'withdraw'
 
-    resources :shipping_addresses, only: [:create, :index, :edit, :update, :destroy]
+    resources :addresses, only: [:create, :index, :edit, :update, :destroy]
 
     delete 'cart_items/empty', as: 'empty'
     resources :cart_items, only: [:index, :create, :update, :destroy]
