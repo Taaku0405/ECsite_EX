@@ -1,0 +1,40 @@
+<div class="container">
+  <h3 class="d-inline-block px-4 ml-5"><i class="fas fa-user-astronaut"></i> 会員情報編集</h3>
+  <div id="error">
+    <%= render 'layouts/error_messages', model: current_customer %>
+  </div>
+  <div class="ml-4">
+    <%= form_with model: current_customer do |f| %>
+    <div class="form-group row">
+      <%= f.label :氏名, class: "col-2" %>
+　　  <%= f.text_field :last_name, autofocus: true, class: "mr-5" %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="form-group row">
+      <%= f.label :フリガナ, class: "col-2" %>
+　　  <%= f.text_field :last_name_kana, class: "mr-5" %>
+      <%= f.text_field :first_name_kana %>
+    </div>
+    <div class="form-group row">
+      <%= f.label :郵便番号, class: "col-2" %>
+　　  <%= f.text_field :postal_code %>
+    </div>
+    <div class="form-group row">
+      <%= f.label :住所, class: "col-2" %>
+　　  <%= f.text_field :address, class: "col-9" %>
+    </div>
+    <div class="form-group row">
+      <%= f.label :電話番号, class: "col-2" %>
+　　  <%= f.text_field :phone_number %>
+    </div>
+    <div class="form-group row">
+       <%= f.label :メールアドレス, class: "col-2" %>
+　　  <%= f.text_field :email %>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <%= f.submit "編集内容を保存", class: "col-3 btn btn-success mr-5" %>
+      <%= link_to "退会する", quit_path, class: "btn btn-outline-danger" %>
+    </div>
+    <% end %>
+  </div>
+</div>
