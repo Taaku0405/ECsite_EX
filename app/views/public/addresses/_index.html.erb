@@ -1,0 +1,23 @@
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr class="bg-light">
+      <th class="col-1">郵便番号</th>
+      <th class="col-4">住所</th>
+      <th class="col-3">宛名</th>
+      <th class="col-2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% address_dates.each do |address_date| %>
+    <tr>
+       <td><%= address_date.postal_code %></td>
+       <td><%= address_date.address %></td>
+       <td><%= address_date.name %></td>
+       <td class="d-flex justify-content-center">
+         <%= link_to "編集する", edit_shipping_address_path(address_date), class: "btn btn-sm btn-success mr-3" %>
+         <%= link_to "削除する", shipping_address_path(address_date), method: :delete, class: "btn btn-sm btn-danger", remote: true %>
+       </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
