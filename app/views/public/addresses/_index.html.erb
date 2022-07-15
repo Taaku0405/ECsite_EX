@@ -14,8 +14,8 @@
        <td><%= address_date.address %></td>
        <td><%= address_date.name %></td>
        <td class="d-flex justify-content-center">
-         <%= link_to "編集する", edit_shipping_address_path(address_date), class: "btn btn-sm btn-success mr-3" %>
-         <%= link_to "削除する", shipping_address_path(address_date), method: :delete, class: "btn btn-sm btn-danger", remote: true %>
+         <%= link_to "編集する", edit_address_path(address_date), class: "btn btn-sm btn-success mr-3" %>
+         <%= link_to "削除する", address_path(address_date), method: :delete, class: "btn btn-sm btn-danger", remote: true %>
        </td>
     </tr>
     <% end %>

@@ -1,0 +1,12 @@
+<div class="container">
+  <h3 class="d-inline-block px-4 ml-5"><i class="fas fa-at"></i> 配送先登録・一覧</h3>
+  <div id="error">
+    <%= render 'layouts/error_messages', model: @address_date %>
+  </div>
+  <div class="ml-4 mt-3" id="new">
+    <%= render "new_form", address_date: @address_date %>
+  </div>
+  <div id="index" class="mt-4">
+    <%= render "index", address_dates: @address_dates %>
+  </div>
+</div>
