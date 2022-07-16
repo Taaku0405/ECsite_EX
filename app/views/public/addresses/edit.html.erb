@@ -4,7 +4,7 @@
      <%= render 'layouts/error_messages', model: @address_date %>
    </div>
    <div class="me-4 mt-3">
-     <%= form_with model: @address_date, url: shipping_address_path(@address_date), method: :patch do |f| %>
+     <%= form_with model: @address_date, url: address_path(@address_date), method: :patch do |f| %>
      <div class="form-group row">
          <%= f.label :郵便番号（ハイフンなし）,  class: "col-3" %>
          <%= f.text_field :postal_code, "placeholder" => "0000000" %>
