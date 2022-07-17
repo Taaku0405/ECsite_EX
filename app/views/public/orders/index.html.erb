@@ -1,0 +1,48 @@
+<div class="container">
+  <h3 class="d-inline-block px-4 ml-5"><i class="fas fa-shopping-bag"></i>注文履歴一覧</h3>
+  <div class="m-4">
+    <% if @orders.any? %>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="bg-light">
+          <td>注文日</td>
+          <td class="col-5">配送先</td>
+          <td class="col-2">注文商品</td>
+          <td>支払い金額</td>
+          <td>ステータス</td>
+          <td>注文詳細</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr>
+          <td class="align-middle bg-light"><%= order.created_at.strftime('%Y/%m/%d')%></td>
+          <td>
+            〒<%= order.postal_code%><br>
+              <%= order.address %><br>
+              <%= order.name %>
+          </td>
+          <td class="align-middle">
+            <ul>
+              <% order.items.each do |item| %>
+              <li style="list-style: none;"><%= item.name %></li>
+              <% end %>
+            </ul>
+          </td>
+          <td class="align-middle">￥<%= order.billing_amount.to_s(:delimited) %></td>
+          <td class="align-middle"><%= order.order_status_i18n %></td>
+          <td class="align-middle"><%= link_to "表示する", order_path(order), class: "btn btn-sm btn-info" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="row">
+      <div class="mx-auto">
+        <%= paginate @orders %>
+      </div>
+    </div>
+    <% else %>
+    <h3 class="text-center">注文履歴はありません</h3>
+    <% end %>
+  </div>
+</div>
