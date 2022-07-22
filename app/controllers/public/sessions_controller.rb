@@ -26,7 +26,8 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-
+  
+  
    protected
 #会員情報を確認するコマンド
   def customer_state

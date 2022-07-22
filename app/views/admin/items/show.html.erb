@@ -21,8 +21,8 @@
           <td><%= @item.genre.name %></td>
         </tr>
         <tr>
-          <th>税抜価格<small>(税込価格)</small></th>
-          <td>¥<%= @item.price.to_s(:delimited) %><small>(¥<%= @item.with_tax_price.to_s(:delimited) %>)</small></td>
+          <th class="text-nowrap">税抜価格<small>(税込価格)</small></th>
+          <td>¥<%= @item.price.to_s(:delimited) %> <small>(¥<%= @item.with_tax_price.to_s(:delimited) %>)</small></td>
         </tr>
         <tr>
           <th>販売ステータス</th>

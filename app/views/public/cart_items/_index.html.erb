@@ -1,7 +1,7 @@
 <h3 class="inline-block px-4"><i class="fas fa-cart-arrow-down"></i>ショッピングカート</h3>
 <% if @cart_items.present? %>
 <div class="ml-auto">
-  <%= link_to "カートを空にする", empty_path, method: :delete, class: "btn btn-sm btn-danger px-3", remote: true %>
+  <%= link_to "カートを空にする", empty_path, method: :delete, class: "btn btn-sm btn-danger px-3", data: { confirm: "カート内の全ての商品を削除してもよろしいですか？" } %>
 </div>
 <table class="table table-bordered my-4">
   <thead>
@@ -24,15 +24,15 @@
       </td>
       <td class="align-middle">¥<%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
       <td class="align-middle">
-        <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local: false do |f| %>
-        <%= f.select :quantity, *[1..10], class: "form-control" %>
-        <%= f.submit "変更", class: "btn btn-sm bg-dark-brown" %>
+        <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
+        <%= f.select :amount, *[1..10], {prompt: "個数選択"} %>
+        <%= f.submit "変更", class: "btn btn-sm btn-success" %>
         <% end %>
       </td>
       <td class="align-middle">¥<%= cart_item.subtotal.to_s(:delimited) %></td>
        <!-- eachで取り出された商品の小計(cart_item.subtotal)を一つずつ足してtatal_priceに格納-->
        <% total_price +=  cart_item.subtotal %>
-       <td class="align-middle text-center"><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger", remote: true %></td>
+       <td class="align-middle text-center"><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "商品を削除してもよろしいですか？" } %></td>
     </tr>
     <% end %>
   </tbody>
@@ -40,7 +40,7 @@
 
 <div class="col-11 mt-3">
   <div class="d-inline-block ml-5">
-    <%= link_to "買い物を続ける", root_path, class: "btn btn-sm bg-dark-brown px-3 py-2" %>
+    <%= link_to "買い物を続ける", items_path, class: "btn btn-sm btn-info px-3 py-2" %>
   </div>
   <div class="d-inline-block float-right" style="width: 30%;">
     <table class="table table-bordered">

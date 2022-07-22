@@ -3,6 +3,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @customer = current_customer
   end
 
   def index
@@ -31,13 +32,16 @@ class Public::OrdersController < ApplicationController
     end
     @address = Address.new
     @address.customer_id = current_customer.id
-    @address.post_number = params[:order][:post_number]
+    @address.postal_code = params[:order][:postal_code]
     @address.address = params[:order][:address]
     @address.name = params[:order][:name]
-    @address.save!
+    if @address.save!
     # flash[:notice] = "配送先が登録されました"
     current_customer.cart_items.all.destroy_all
-    render "complete"
+    redirect_to completed_path
+    else
+      render :confirmation
+    end
    end
 
   def confirm
@@ -49,7 +53,7 @@ class Public::OrdersController < ApplicationController
     @order.total_payment = @total_price + @order.charge
 
       if params[:order][:select_address] == "0"
-        @order.post_number = current_customer.post_number
+        @order.postal_code = current_customer.postal_code
         @order.address = current_customer.address
         @order.name = current_customer.last_name + current_customer.first_name
 
@@ -60,18 +64,18 @@ class Public::OrdersController < ApplicationController
           render "new"
         else
           @address = Address.find(params[:order][:address_id])
-          @order.post_number = @address.post_number
+          @order.postal_code = @address.postal_code
           @order.address = @address.address
           @order.name = @address.name
         end
 
       elsif params[:order][:select_address] == "2"
 
-        if params[:order][:post_number] == "" && params[:order][:address] == "" && params[:order][:name] == ""
+        if params[:order][:postal_code] == "" && params[:order][:address] == "" && params[:order][:name] == ""
 
           flash[:notice] = "新しいお届け先が全て入力されていません"
           render "new"
-        elsif params[:order][:post_number] == ""
+        elsif params[:order][:postal_code] == ""
           flash[:notice] = "郵便番号が入力されていません"
           render "new"
         elsif params[:order][:address] == ""
@@ -81,7 +85,7 @@ class Public::OrdersController < ApplicationController
           flash[:notice] = "宛名が入力されていません"
           render "new"
         else
-          @order.post_number = params[:order][:post_number]
+          @order.postal_code = params[:order][:postal_code]
           @order.address = params[:order][:address]
           @order.name = params[:order][:name]
         end
@@ -97,7 +101,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:post_number, :address, :name, :payment_method, :customer_id, :charge, :total_payment, :order_status)
+    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :customer_id, :charge, :total_payment, :order_status)
   end
 
 end

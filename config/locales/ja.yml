@@ -42,17 +42,17 @@ ja:
         price: 価格(税抜)
         genre: ジャンル
       customer:
-        family_name: 名字
+        last_name: 名字
         first_name: 名前
-        family_name_kana: 名字(カナ)
+        last_name_kana: 名字(カナ)
         first_name_kana: 名前(カナ)
         postal_code: 郵便番号
         address: 住所
-        telephone_number: 電話番号
+        phone_number: 電話番号
         email: メールアドレス
         encrypted_password: パスワード
         password: パスワード
-      shipping_address:
+        address:
         postal_code: 郵便番号
         address: 住所
         name: 配送先名

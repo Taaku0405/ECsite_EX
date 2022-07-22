@@ -11,10 +11,14 @@ class Admin::GenresController < ApplicationController
   end
 
   def create
-    @genre = Genre.new(genre_params)
-    @genres = Genre.all
+     @genre = Genre.new(genre_params)
     if @genre.save
-      flash.now[:notice] = "ジャンルを作成しました"
+      @genres = Genre.all
+      redirect_to request.referer
+      flash[:notice] = "ジャンルを追加しました"
+    else
+      redirect_to request.referer
+      flash[:notice] = "ジャンルの追加に失敗しました。同じ名前の使用または空白の場合は追加できません"
     end
   end
 
@@ -26,6 +30,14 @@ class Admin::GenresController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def destroy
+   @genre = Genre.find(params[:id])
+   @genre.destroy
+   @genres = Genre.all
+   redirect_to admin_genres_path
+   flash[:notice] = "ジャンルを削除しました"
   end
 
   private
