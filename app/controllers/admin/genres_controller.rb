@@ -24,12 +24,9 @@ class Admin::GenresController < ApplicationController
 
   def update
      @genre = Genre.find(params[:id])
-    if @genre.update(genre_params)
-      flash[:notice] ="ジャンル名を変更しました"
-      redirect_to admin_genres_path
-    else
-      render :edit
-    end
+     @genre.update(genre_params)
+     flash[:notice] = "ジャンルを変更しました"
+     redirect_to admin_genres_path
   end
   
   def destroy

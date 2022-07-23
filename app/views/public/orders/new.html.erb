@@ -12,8 +12,7 @@
         <%= f.label :クレジットカード, Order.payment_methods_i18n[:credit_card] %>
       </div>
       <div class="form">
-        <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-        <%= f.label :銀行振込, Order.payment_methods_i18n[:transfer] %>
+        <%= f.radio_button :payment_method, Order.payment_methods.key(1) %><%= f.label :銀行振込, Order.payment_methods_i18n[:transfer] %>
       </div>
     </div>
   <h4 class="font-weight-bolder d-inline-block px-2">お届け先</h4>
@@ -60,7 +59,7 @@
     </div>
   </div>
   <div class="actions d-flex justify-content-center">
-     <%= f.submit "確認画面へ進む", class: "btn btn-success" %>
+     <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
   </div>
   <% end %>
   </div>

@@ -24,7 +24,7 @@ ja:
 #ここから下はデフォルト
   activerecord:
     models:
-      shipping_address: 配送先
+      address: 配送先
       item: 商品
       order: 注文
       cart_item: カート
@@ -62,6 +62,12 @@ ja:
         name: 配送先名
       genre:
         name: ジャンル名
+      address:
+        postal_code: 郵便番号
+        address: 住所
+        name: 配送先名
+
+
 
 
   date:
