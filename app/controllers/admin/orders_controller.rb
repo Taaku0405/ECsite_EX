@@ -19,6 +19,7 @@ class Admin::OrdersController < ApplicationController
       @order.order_details.update_all(production_status: 1)
     end
     redirect_to admin_order_path(@order)
+    flash[:notice] = "注文ステータスの更新が完了しました。"
   end
 
   private

@@ -23,10 +23,11 @@ class Admin::ItemsController < ApplicationController
     @genres = Genre.all
     @item = Item.new(item_params)
     if @item.save
-      flash[:success] = "新商品を登録しました"
       redirect_to admin_item_path(@item)
+      flash[:notice] = "新商品を登録しました"
     else
       render "admin/items/new"
+      flash[:notice] = "商品登録できません。空白の場合は登録できません"
     end
   end 
   
@@ -34,10 +35,11 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @genres = Genre.all
     if @item.update(item_params)
-      flash[:notice] ="商品情報を更新しました"
       redirect_to admin_items_path
+      flash[:notice] ="商品情報を更新しました"
     else
       render :edit
+      flash[:notice] = "商品情報の更新に失敗しました。再度確認をお願いします"
     end 
   end 
   

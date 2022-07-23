@@ -88,7 +88,7 @@ class Public::OrdersController < ApplicationController
           @order.name = params[:order][:name]
         end
       else
-         flash.now[:notice] = "住所を選択してください"
+         flash[:notice] = "住所を選択してください"
          render "new"
       end
   end
