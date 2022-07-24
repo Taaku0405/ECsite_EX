@@ -14,10 +14,11 @@ class Public::CartItemsController < ApplicationController
     end
 
     if @cart_item.save
-      flash[:notice] = "カートに商品が追加されました。"
       redirect_to cart_items_path
+      flash[:notice] = "カートに商品が追加されました。"
     else
-      redirect_to request.referer, notice: "個数を選択してください"
+      redirect_to request.referer,
+      flash[:notice] = "個数を選択してください"
     end
   end
 
@@ -28,24 +29,24 @@ class Public::CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
-    flash[:notice] = "商品の個数が変更されました。"
     redirect_to cart_items_path(@cart_item.id)
+    flash[:notice] = "商品の個数が変更されました。"
   end
 
   def empty
     #カート内商品を全て削除
     @cart_item = current_customer.cart_items
     @cart_item.destroy_all
-    flash[:notice] = "全ての商品が削除されました。"
     redirect_to request.referer
+    flash[:notice] = "全ての商品が削除されました。"
   end
 
   def destroy
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
     @cart_items = CartItem.all
-    flash.now[:notice] = "商品が削除されました。"
     redirect_to request.referer
+    flash[:notice] = "商品が削除されました。"
   end
 
   private
