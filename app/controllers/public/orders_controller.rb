@@ -3,7 +3,6 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @customer = current_customer
   end
 
   def index
@@ -27,19 +26,18 @@ class Public::OrdersController < ApplicationController
       order_detail.order_id = @order.id
       order_detail.amount = cart_item.amount
       order_detail.price = cart_item.item.price
-      order_detail.save
+      # saveの後ろに!をつけることで保存出来ない場合エラー
+      order_detail.save!
     end
     @address = Address.new
     @address.customer_id = current_customer.id
     @address.postal_code = params[:order][:postal_code]
     @address.address = params[:order][:address]
     @address.name = params[:order][:name]
-    if @address.save!
+    @address.save!
+    # flash[:notice] = "配送先が登録されました"
     current_customer.cart_items.all.destroy_all
-    redirect_to completed_path
-    else
-      render :confirmation
-    end
+    render "complete"
    end
 
   def confirm
@@ -88,7 +86,7 @@ class Public::OrdersController < ApplicationController
           @order.name = params[:order][:name]
         end
       else
-         flash[:notice] = "住所を選択してください"
+         flash.now[:notice] = "住所を選択してください"
          render "new"
       end
   end

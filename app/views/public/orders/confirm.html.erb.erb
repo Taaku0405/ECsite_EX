@@ -51,12 +51,12 @@
     </div>
     <div class="row mb-4">
       <h4 class="font-weight-bolder mr-5">お届け先</h4>
-      <%= "〒" + @order.post_number %><br>
+      <%= "〒" + @order.postal_code %><br>
       <%= @order.address %><br>
       <%= @order.name %>
     </div>
       <%= form_with model: @order, url:{controller: "orders",action: "create"} do |f| %>
-        <%= f.hidden_field :post_number %>
+        <%= f.hidden_field :postal_code %>
         <%= f.hidden_field :address %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :payment_method %>
